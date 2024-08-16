@@ -1,0 +1,38 @@
+% Read the input image
+inputImage = imread('50.jpg');
+
+% Convert the image to grayscale
+grayImage = rgb2gray(inputImage);
+
+% Apply edge detection to detect edges in the image
+edgeImage = edge(grayImage, 'Canny');
+
+% Perform morphological operations to enhance the edges
+se = strel('disk',5);% Adjust the integer to get accurate outputs
+enhancedEdges = imclose(edgeImage, se);
+
+% Perform Hough transform to detect lines
+[H, theta, rho] = hough(enhancedEdges);
+peaks = houghpeaks(H, 10); % Adjust the number of peaks as needed
+
+% Extract the lines from the Hough transform
+lines = houghlines(enhancedEdges, theta, rho, peaks);
+
+% Filter and display the lines corresponding to speed breakers
+figure;
+imshow(inputImage);
+hold on;
+
+for k = 1:length(lines)
+% Calculate the angle of the line
+angle = lines(k).theta;
+
+% Filter lines based on the angle (adjust the range as needed)
+if angle > 60 && angle < 120
+% Draw the line on the image
+xy = [lines(k).point1; lines(k).point2];
+plot(xy(:, 1), xy(:, 2), 'LineWidth', 2, 'Color', 'r');
+end
+end
+
+hold off;
