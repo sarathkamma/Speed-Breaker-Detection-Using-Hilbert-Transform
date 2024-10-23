@@ -5,7 +5,7 @@ This MATLAB project is designed to detect speed breakers by analyzing vehicle vi
 
 Key Components
 1.	Data Acquisition: Collect vibration signals from the vehicle’s sensors or accelerometers.
-2.	Hough Transform Application: Utilize MATLAB’s built-in functions to apply the Hilbert transform and extract features from the vibration signals.
+2.	Hough Transform Application: Utilize MATLAB’s built-in functions to apply the Hilbert transform and extract features from the images.
 3.	Detection Algorithm: Implement an algorithm to detect speed breakers based on the features derived from the Hough transform.
 
 Installation and Setup
@@ -21,13 +21,13 @@ Setup
    
 Usage
 1.  Prepare Data
-2.  Ensure that your vibration data is in a supported format (e.g., .mat, .csv).
+2.  Ensure that your data(image) is in a supported format (e.g., .jpeg, .png).
 3.  Load your data into MATLAB. You can use functions like readmatrix, load, or similar.
    
 Run the Analysis
 1.  Open MATLAB and navigate to the directory containing the scripts.
 2.  Execute the main script (e.g., speed_breaker_detection.m) by typing:
-3.  The script will process the vibration data, apply the Hilbert transform, and display the results.
+3.  The script will process the image as data, apply the Hough transform, and display the results.
 
 Visualize Results
 1.  The script may generate plots and visualizations of the detected speed breakers and vibration features.
